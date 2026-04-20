@@ -1,7 +1,11 @@
 package com.example.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.GenerationType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
