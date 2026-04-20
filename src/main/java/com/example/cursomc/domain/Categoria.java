@@ -1,11 +1,10 @@
 package com.example.cursomc.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +15,8 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //definindo estrategia de geração automatica de chave primaria do BD
     private Integer id;
     private String nome;
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos = new ArrayList<>();//Uma categoria possui vários produtos, logo precisamos instanciar uma lista dos produtos aqui
 
     public Categoria(){ //Vazio para o Hibernate
     }
@@ -37,6 +38,12 @@ public class Categoria implements Serializable {
     }
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     @Override
