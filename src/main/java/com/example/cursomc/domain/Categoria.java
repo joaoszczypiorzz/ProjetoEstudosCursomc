@@ -1,5 +1,6 @@
 package com.example.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //definindo estrategia de geração automatica de chave primaria do BD
     private Integer id;
     private String nome;
+    @JsonManagedReference
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();//Uma categoria possui vários produtos, logo precisamos instanciar uma lista dos produtos aqui
 
