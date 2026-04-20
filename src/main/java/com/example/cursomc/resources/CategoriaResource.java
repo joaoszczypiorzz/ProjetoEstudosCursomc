@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @RestController //definindo que esta classe será um controlador Rest
 @RequestMapping(value = "/categorias") //definindo qual o endpoint padrão para essa classe
