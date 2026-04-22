@@ -18,7 +18,7 @@ public class Estado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @OneToMany(mappedBy = "estado")
+    @OneToMany(mappedBy = "estado")//Mapeado pelo atributo estado da classe Cidade
     private List<Cidade> cidades = new ArrayList<>();//Um estado possui várias cidades
 
     public Estado(){}
