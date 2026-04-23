@@ -1,5 +1,6 @@
 package com.example.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Estado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+    @JsonBackReference
     @OneToMany(mappedBy = "estado")//Mapeado pelo atributo estado da classe Cidade
     private List<Cidade> cidades = new ArrayList<>();//Um estado possui várias cidades
 

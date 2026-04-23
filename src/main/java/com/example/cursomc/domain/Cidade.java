@@ -1,5 +1,6 @@
 package com.example.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +18,7 @@ public class Cidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "estado_id") //definindo qual vai ser o nome da chave estrangeira no BD
     private Estado estado; //Uma cidade possui apenas um estado
