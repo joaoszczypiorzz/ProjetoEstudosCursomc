@@ -13,7 +13,7 @@ public class PedidoService {
     @Autowired //esta dependencia será automaticamente instancianda pelo Spring
     private PedidoRepository repo;
 
-    public Pedido buscar(Integer id){
+    public Pedido find(Integer id){
         Optional<Pedido> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjNotFoundException(
                 "Objeto não foi encontrado! Id: " + id + " Tipo: " + Pedido.class.getName()

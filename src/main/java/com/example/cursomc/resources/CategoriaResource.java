@@ -21,8 +21,8 @@ public class CategoriaResource {
     private CategoriaService service; //com autoWired para ele instanciar automaticamente este obj
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET) //definindo que essa requisição será um request Get
-    public ResponseEntity<?> find(@PathVariable Integer id){
-        Categoria obj = service.buscar(id); //acessando o Service
+    public ResponseEntity<Categoria> find(@PathVariable Integer id){
+        Categoria obj = service.find(id); //acessando o Service
         return ResponseEntity.ok().body(obj);
     }
 
@@ -32,5 +32,12 @@ public class CategoriaResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id){
+        obj.setId(id);
+        obj = service.update(obj);
+        return ResponseEntity.noContent().build();
     }
 }

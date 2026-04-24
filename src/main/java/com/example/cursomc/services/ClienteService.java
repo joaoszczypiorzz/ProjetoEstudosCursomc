@@ -13,7 +13,7 @@ public class ClienteService {
     @Autowired //esta dependencia será automaticamente instancianda pelo Spring
     private ClienteRepository repo;
 
-    public Cliente buscar (Integer id){
+    public Cliente find (Integer id){
         Optional<Cliente> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjNotFoundException(
                 "Objeto não foi encontrado! Id: " + id + " Tipo: " + Cliente.class.getName()

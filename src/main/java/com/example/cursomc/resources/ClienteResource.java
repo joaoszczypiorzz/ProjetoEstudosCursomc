@@ -17,8 +17,8 @@ public class ClienteResource {
     private ClienteService service; //com autoWired para ele instanciar automaticamente este obj
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET) //definindo que essa requisição será um request Get
-    public ResponseEntity<?> find(@PathVariable Integer id){
-        Cliente obj = service.buscar(id); //acessando o Service
+    public ResponseEntity<Cliente> find(@PathVariable Integer id){
+        Cliente obj = service.find(id); //acessando o Service
         return ResponseEntity.ok().body(obj);
     }
 }
