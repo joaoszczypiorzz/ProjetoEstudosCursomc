@@ -1,6 +1,7 @@
 package com.example.cursomc.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import lombok.AccessLevel;
@@ -22,6 +23,7 @@ public class ItemPedido implements Serializable {
 
     @EqualsAndHashCode.Include
     @EmbeddedId
+    @JsonIgnore
     private ItemPedidoPK id = new ItemPedidoPK();
 
     private double desconto;
@@ -36,6 +38,7 @@ public class ItemPedido implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public Pedido getPedido(){
         return id.getPedido();
     }

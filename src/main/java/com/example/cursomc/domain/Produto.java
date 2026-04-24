@@ -1,6 +1,7 @@
 package com.example.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,6 +36,7 @@ public class Produto implements Serializable {
     )
     private List<Categoria> categorias = new ArrayList<>(); //Um produto pode ter várias categorias
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.produto")
     private Set<ItemPedido> itens = new HashSet<>();
 
@@ -59,6 +61,7 @@ public class Produto implements Serializable {
         return Objects.hashCode(id);
     }
 
+    @JsonIgnore
     public List<Pedido> getPedidos(){
         List<Pedido> lista = new ArrayList<>();
         for(ItemPedido x : itens){

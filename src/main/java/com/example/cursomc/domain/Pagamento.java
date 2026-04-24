@@ -1,6 +1,7 @@
 package com.example.cursomc.domain;
 
 import com.example.cursomc.Enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
@@ -36,6 +37,7 @@ public abstract class Pagamento implements Serializable {
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
+    @JsonBackReference
     private Pedido pedido;
 
     public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
