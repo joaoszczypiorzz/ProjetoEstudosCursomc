@@ -1,0 +1,45 @@
+package com.example.cursomc.domain;
+
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+public class ItemPedido implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @EqualsAndHashCode.Include
+    @EmbeddedId
+    private ItemPedidoPK id = new ItemPedidoPK();
+
+    private double desconto;
+    private Integer quantidade;
+    private double preco;
+
+    public ItemPedido(Pedido pedido, Produto produto, double desconto, Integer qtd, double preco) {
+        id.setPedido(pedido);
+        id.setProduto(produto);
+        this.desconto = desconto;
+        this.quantidade = qtd;
+        this.preco = preco;
+    }
+
+    public Pedido getPedido(){
+        return id.getPedido();
+    }
+    public Produto getProduto(){
+        return id.getProduto();
+    }
+}
