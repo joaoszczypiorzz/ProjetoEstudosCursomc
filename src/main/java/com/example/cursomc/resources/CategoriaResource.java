@@ -1,6 +1,7 @@
 package com.example.cursomc.resources;
 
 import com.example.cursomc.domain.Categoria;
+import com.example.cursomc.dto.CategoriaDto;
 import com.example.cursomc.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController //definindo que esta classe será um controlador Rest
@@ -24,6 +27,14 @@ public class CategoriaResource {
     public ResponseEntity<Categoria> find(@PathVariable Integer id){
         Categoria obj = service.find(id); //acessando o Service
         return ResponseEntity.ok().body(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List <CategoriaDto>> findAll(){
+        List<Categoria> list = service.findAll();
+        List<CategoriaDto> listDto = list.stream()
+                .map(obj -> new CategoriaDto(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 
     @RequestMapping(method = RequestMethod.POST)
