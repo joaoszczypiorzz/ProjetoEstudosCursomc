@@ -1,6 +1,7 @@
 package com.example.cursomc.dto;
 
 import com.example.cursomc.domain.Cliente;
+import com.example.cursomc.services.validation.ClienteUpdate;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
+@ClienteUpdate
 public class ClienteDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
