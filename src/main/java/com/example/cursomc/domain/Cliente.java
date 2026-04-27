@@ -4,6 +4,7 @@ import com.example.cursomc.Enums.TipoCliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,7 +36,9 @@ public class Cliente implements Serializable {
     @EqualsAndHashCode.Include //Diz ao Lombok usar apenas este atributo para gerar o Hash Code e Equals
     private Integer id;
     private String nome;
+    @Column(unique = true) //impossivel registrar dois e-mails iguais
     private String email;
+
     private String cpfOuCnpj;
     //Bloqueando o Lombok de gerar os Getter e Setters para esse Atributo
     @Getter(AccessLevel.NONE)
