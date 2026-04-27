@@ -53,12 +53,12 @@ public class Cliente implements Serializable {
     private List<Pedido> pedidos = new ArrayList<>();
 
 
-    public Cliente(Integer id, String nome, String email, String cpfOuCnpj, Integer tipo) {
+    public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cpfOuCnpj = cpfOuCnpj;
-        this.tipo = tipo;
+        this.tipo = (tipo == null) ? null : tipo.getCod();
     }
 
     public TipoCliente getTipo() {
